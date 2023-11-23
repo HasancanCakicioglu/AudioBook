@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Speech</title>
+</head>
+<body>
+    <h1>Result</h1>
+
+    <audio id="audioPlayer" controls>
+        <source src="{{ tts_file_path }}" type="audio/mp3">
+    </audio>
+
+    <div class="controls">
+        <button id="playButton" type="button">Play</button>
+        <button id="pauseButton" type="button">Pause</button>
+        <button id="stopButton" type="button">Stop</button>
+        <progress id="progressBar" value="0" max="100"></progress>
+    </div>
+
+    <script>
+        var audioPlayer = document.getElementById("audioPlayer");
+        var playButton = document.getElementById("playButton");
+        var pauseButton = document.getElementById("pauseButton");
+        var stopButton = document.getElementById("stopButton");
+        var progressBar = document.getElementById("progressBar");
+
+        playButton.addEventListener("click", function() {
+            audioPlayer.play();
+        });
+
+        pauseButton.addEventListener("click", function() {
+            audioPlayer.pause();
+        });
+
+        stopButton.addEventListener("click", function() {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+        });
+
+        audioPlayer.addEventListener("timeupdate", function() {
+            progressBar.value = audioPlayer.currentTime / audioPlayer.duration * 100;
+        });
+    </script>
+</body>
+</html>
