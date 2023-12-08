@@ -35,7 +35,7 @@ def extract_text_from_pdf(pdf_file):
     return text
 
 def text_to_speech(text):
-    tts = gTTS(text=text, lang='en')
+    tts = gTTS(text=text, lang='tr')
     tts_file_path = r'D:\SoftwareDevelopment\Projects\pycharm\AudioBook\static\tts_output.mp3'
     tts.save(tts_file_path)
     return tts_file_path
